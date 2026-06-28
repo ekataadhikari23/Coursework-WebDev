@@ -3,9 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ekta's Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/8acce1427f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1> Hi I am Ekata </h1>
+
+    <!-- NAVBAR -->
+    <section id="topbar">
+        <div id="brandname">
+            <span id="shoptitle">🍓 Ekta's Shop</span>
+        </div>
+        <div id="searchzone">
+            <input placeholder="Search something cute..." id="searchBox">
+            <button id="gobutton">Go!</button>
+        </div>
+        <div id="rightside">
+            <span class="toplink"><i class="fa-regular fa-user"></i> Ekataa</span>
+            <span class="toplink"><i class="fa-solid fa-cart-shopping"></i> My Bag</span>
+        </div>
+    </section>
+
+    <!-- FILTER BAR -->
+    <section id="filterstrip">
+        <label for="shopfilter">Browse by shop:</label>
+        <select id="shopfilter">
+            <option value="">All Shops</option>
+            <option value="BerryCo">BerryCo 🍒</option>
+            <option value="BeeHive">BeeHive 🐝</option>
+            <option value="SillyStuff">SillyStuff 🎪</option>
+        </select>
+    </section>
+
+    <!-- PRODUCT LIST -->
+    <section id="allproducts">
+        <h2 class="bigtitle">✨ All the Cute Stuff</h2>
+        <div id="cardgrid">
+
+            <div class="itemcard">
+                <img src="product1.jpg" alt="Pink Tote" class="itemphoto">
+                <div class="iteminfo">
+                    <h3 class="itemname">Berry Tote Bag</h3>
+                    <p class="itemprice">$12.99</p>
+                    <p class="itemstock almostgone">⚠️ Only 3 left omg!!</p>
+                    <p class="itemshop">from BerryCo 🍒</p>
+                    <button class="peekbtn">See this!</button>
+                </div>
+            </div>
+
+            <div class="itemcard">
+                <img src="product2.jpg" alt="Glitter Book" class="itemphoto">
+                <div class="iteminfo">
+                    <h3 class="itemname">Sparky Notebook</h3>
+                    <p class="itemprice">$7.49</p>
+                    <p class="itemstock">In stock: 20 yay!</p>
+                    <p class="itemshop">from BeeHive 🐝</p>
+                    <button class="peekbtn">See this!</button>
+                </div>
+            </div>
+
+            <div class="itemcard">
+                <img src="product3.jpg" alt="Mug" class="itemphoto">
+                <div class="iteminfo">
+                    <h3 class="itemname">Bees Mug</h3>
+                    <p class="itemprice">$9.99</p>
+                    <p class="itemstock almostgone">⚠️ Only 2 left oh no!</p>
+                    <p class="itemshop">from SillyStuff 🎪</p>
+                    <button class="peekbtn">See this!</button>
+                </div>
+            </div>
+
+            <div class="itemcard">
+                <img src="product4.jpg" alt="Hair Clips" class="itemphoto">
+                <div class="iteminfo">
+                    <h3 class="itemname">Rosy Hair Clips</h3>
+                    <p class="itemprice">$4.99</p>
+                    <p class="itemstock">In stock: 50 woohoo!</p>
+                    <p class="itemshop">from BerryCo 🍒</p>
+                    <button class="peekbtn">See this!</button>
+                </div>
+            </div>
+
+            <div class="itemcard">
+                <img src="product5.jpg" alt="Sticker Pack" class="itemphoto">
+                <div class="iteminfo">
+                    <h3 class="itemname">Ekta's Sticker Pack</h3>
+                    <p class="itemprice">$3.50</p>
+                    <p class="itemstock">In stock: 100!</p>
+                    <p class="itemshop">from BeeHive 🐝</p>
+                    <button class="peekbtn">See this!</button>
+                </div>
+            </div>
+
+            <div class="itemcard">
+                <img src="product6.jpg" alt="Fluffy Pen" class="itemphoto">
+                <div class="iteminfo">
+                    <h3 class="itemname">Fluffy Silly Pen</h3>
+                    <p class="itemprice">$2.25</p>
+                    <p class="itemstock almostgone">⚠️ Only 4 left!!</p>
+                    <p class="itemshop">from SillyStuff 🎪</p>
+                    <button class="peekbtn">See this!</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- VIEW ONE PRODUCT -->
+    <section id="singleitem">
+        <h2 class="bigtitle">🌸 Look at this thing!!</h2>
+        <div id="itemrow">
+
+            <div id="photowrap">
+                <img src="product1.jpg" alt="Product" id="bigphoto">
+            </div>
+
+            <div id="itemwords">
+                <h1 id="itemheading">Berry Tote Bag</h1>
+                <p id="itemdesc">okay so this bag is SO cute. berry pink, soft fabric, holds literally everything. ekta approved 🍓</p>
+                <p id="itembigprice">$12.99</p>
+                <p id="stockwarning" class="almostgone">⚠️ Only 3 left — grab it fast!!</p>
+                <p id="shopname">from: <strong>BerryCo 🍒</strong></p>
+                <div id="twobtns">
+                    <span class="clickbtn" id="bagbtn">🛒 Add to Bag</span>
+                    <span class="clickbtn" id="fixbtn">✏️ Edit</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ADD / EDIT PRODUCT -->
+    <section id="addstuff">
+        <h2 class="bigtitle">🌷 Add or Fix a Product</h2>
+        <div id="productform">
+
+            <label>Product Name</label>
+            <input type="text" placeholder="what is this thing called?" class="myinput">
+
+            <label>Description</label>
+            <input type="text" placeholder="say something nice about it lol" class="myinput">
+
+            <label>Price ($)</label>
+            <input type="number" placeholder="0.00" min="0" class="myinput">
+
+            <label>How many in stock</label>
+            <input type="number" placeholder="0" min="0" class="myinput">
+
+            <label>Which shop sells this</label>
+            <select class="myinput">
+                <option value="">Pick a shop</option>
+                <option value="BerryCo">BerryCo 🍒</option>
+                <option value="BeeHive">BeeHive 🐝</option>
+                <option value="SillyStuff">SillyStuff 🎪</option>
+            </select>
+
+            <label>Upload a photo</label>
+            <input type="file" accept="image/*" class="myinput" id="photoupload">
+
+            <div id="savecancelrow">
+                <span class="clickbtn" id="savebtn">💾 Save it!</span>
+                <span class="clickbtn" id="cancelbtn">✖ Nope, cancel</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SUPPLIER LIST -->
+    <section id="shoplist">
+        <h2 class="bigtitle">🏪 The Shops</h2>
+        <table id="shoptable">
+            <thead>
+                <tr>
+                    <th>Shop Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Do stuff</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BerryCo 🍒</td>
+                    <td>berry@berryco.com</td>
+                    <td>+977-9812345678</td>
+                    <td><span class="clickbtn tinybtn">Edit</span></td>
+                </tr>
+                <tr>
+                    <td>BeeHive 🐝</td>
+                    <td>buzz@beehive.com</td>
+                    <td>+977-9845678901</td>
+                    <td><span class="clickbtn tinybtn">Edit</span></td>
+                </tr>
+                <tr>
+                    <td>SillyStuff 🎪</td>
+                    <td>hehe@sillystuff.com</td>
+                    <td>+977-9867891234</td>
+                    <td><span class="clickbtn tinybtn">Edit</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ADD / EDIT SUPPLIER -->
+    <section id="addshop">
+        <h2 class="bigtitle">🌸 Add or Edit a Shop</h2>
+        <div id="shopform">
+
+            <label>Shop Name</label>
+            <input type="text" placeholder="what do we call this shop" class="myinput">
+
+            <label>Their Email</label>
+            <input type="email" placeholder="someone@somewhere.com" class="myinput">
+
+            <label>Their Phone</label>
+            <input type="text" placeholder="+977-98XXXXXXXX" class="myinput">
+
+            <div id="shopsavecancelrow">
+                <span class="clickbtn" id="saveshopbtn">💾 Save Shop</span>
+                <span class="clickbtn" id="cancelshopbtn">✖ Cancel</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LOGIN -->
+    <section id="loginpage">
+        <div id="loginbox">
+            <h2>🔐 Hey Ekta, log in!</h2>
+            <label>Username</label>
+            <input type="text" placeholder="it's you, type your name" class="myinput">
+            <label>Password</label>
+            <input type="password" placeholder="shhh secret" class="myinput">
+            <span class="clickbtn" id="enterbtn">Let me in! 🚪</span>
+            <p id="wrongmsg">❌ nope that's wrong try again!!</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
