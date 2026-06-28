@@ -95,11 +95,10 @@ body {
                 url('COVER.png');
     
     background-size: cover;       
-    background-position: center;   
+    background-position: center 30%;   
     background-repeat: no-repeat; 
-    padding: 100px 50px;    
-    display: flex;
-    align-items: center;
+    padding: 120px 50px;
+    width: 100%; 
 }
 
 #herotext {
