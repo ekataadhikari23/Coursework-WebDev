@@ -91,13 +91,15 @@ body {
 
 /* HERO BANNER WITH INTEGRATED IMAGE LAYOUT */
 #herobanner {
-    background: linear-gradient(135deg, #06284f 0%, #135294 60%, #247cb8 100%);
-    padding: 60px 50px;
+    background: linear-gradient(135deg, rgba(6, 40, 79, 0.85) 0%, rgba(19, 82, 148, 0.75) 100%), 
+                url('COVER.png');
+    
+    background-size: cover;       
+    background-position: center;   
+    background-repeat: no-repeat; 
+    padding: 100px 50px;    
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 30px;
 }
 
 #herotext {
