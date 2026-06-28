@@ -7,14 +7,15 @@
 }
 
 body {
-    background-color: #f0f6ff;
+    background: linear-gradient(160deg, #ffffff 0%, #dceeff 40%, #b8daff 100%);
+    background-attachment: fixed;
     min-height: 100vh;
 }
 
 /* NAVBAR */
 #topbar {
-    background-color: #ffffff;
-    border-bottom: 2px solid #cce0ff;
+    background: linear-gradient(90deg, #0a4a8f 0%, #1a6bbf 50%, #3a8fd4 100%);
+    border-bottom: 2px solid #0a3a6f;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -26,7 +27,7 @@ body {
 #shoptitle {
     font-size: 22px;
     font-weight: bold;
-    color: #1a6bbf;
+    color: white;
     letter-spacing: 1px;
 }
 
@@ -37,34 +38,41 @@ body {
 }
 
 #searchBox {
-    background-color: #f0f6ff;
-    border: 1px solid #aacfee;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 5px;
     height: 36px;
     width: 300px;
     padding: 0 14px;
     font-size: 14px;
-    color: #1a2a3a;
+    color: white;
     outline: none;
 }
 
+#searchBox::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
 #searchBox:focus {
-    border-color: #1a6bbf;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: white;
 }
 
 #gobutton {
-    background-color: #1a6bbf;
-    color: white;
+    background-color: white;
+    color: #1a6bbf;
     border: none;
     border-radius: 5px;
     height: 36px;
     padding: 0 22px;
     cursor: pointer;
     font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.2s;
 }
 
 #gobutton:hover {
-    background-color: #155a9e;
+    background-color: #dceeff;
 }
 
 #rightside {
@@ -73,59 +81,63 @@ body {
 }
 
 .toplink {
-    color: #1a6bbf;
+    color: rgba(255, 255, 255, 0.85);
     font-size: 14px;
     cursor: pointer;
+    transition: color 0.2s;
 }
 
 .toplink:hover {
+    color: white;
     text-decoration: underline;
 }
 
 /* HERO BANNER */
 #herobanner {
-    background-color: #1a6bbf;
-    padding: 60px 50px;
+    background: linear-gradient(135deg, #0a3a6f 0%, #1a6bbf 50%, #3a9fd4 100%);
+    padding: 80px 50px;
 }
 
 #herotext {
-    max-width: 550px;
+    max-width: 580px;
 }
 
 #herotitle {
-    font-size: 36px;
+    font-size: 40px;
     color: white;
     font-weight: bold;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    line-height: 1.3;
 }
 
 #herosub {
-    font-size: 15px;
+    font-size: 16px;
     color: #cde4ff;
-    margin-bottom: 24px;
-    line-height: 1.7;
+    margin-bottom: 28px;
+    line-height: 1.8;
 }
 
 #herobtn {
     display: inline-block;
     background-color: white;
     color: #1a6bbf;
-    padding: 11px 30px;
+    padding: 13px 34px;
     border-radius: 5px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 #herobtn:hover {
-    background-color: #e0f0ff;
+    background-color: #dceeff;
 }
 
 /* FILTER STRIP */
 #filterstrip {
-    background-color: #ffffff;
-    border-bottom: 1px solid #cce0ff;
-    border-top: 1px solid #cce0ff;
+    background: linear-gradient(90deg, #f0f8ff 0%, #ffffff 50%, #f0f8ff 100%);
+    border-bottom: 1px solid #b8d8f8;
+    border-top: 1px solid #b8d8f8;
     padding: 12px 50px;
     display: flex;
     align-items: center;
@@ -134,7 +146,7 @@ body {
 
 #filterstrip label {
     font-size: 13px;
-    color: #445566;
+    color: #334a60;
 }
 
 #shopfilter,
@@ -142,10 +154,11 @@ body {
     border: 1px solid #aacfee;
     border-radius: 5px;
     padding: 6px 10px;
-    background-color: #f0f6ff;
+    background-color: white;
     color: #1a2a3a;
     font-size: 13px;
     outline: none;
+    transition: border-color 0.2s;
 }
 
 #shopfilter:focus,
@@ -157,7 +170,7 @@ body {
 .bigtitle {
     font-size: 20px;
     margin: 36px 50px 18px 50px;
-    color: #1a2a3a;
+    color: #0a3a6f;
     font-weight: bold;
     border-left: 4px solid #1a6bbf;
     padding-left: 12px;
@@ -173,17 +186,18 @@ body {
 }
 
 .itemcard {
-    background-color: #ffffff;
+    background: linear-gradient(160deg, #ffffff 0%, #f0f8ff 100%);
     border: 1px solid #cce0ff;
     border-radius: 8px;
     width: 210px;
     overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
 
 .itemcard:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     border-color: #1a6bbf;
+    box-shadow: 0 8px 24px rgba(26, 107, 191, 0.15);
 }
 
 .photowrapper {
@@ -195,6 +209,11 @@ body {
     height: 160px;
     object-fit: cover;
     display: block;
+    transition: opacity 0.2s;
+}
+
+.itemcard:hover .itemphoto {
+    opacity: 0.93;
 }
 
 .badgelabel {
@@ -234,7 +253,7 @@ body {
 
 .itemprice {
     font-size: 16px;
-    color: #1a6bbf;
+    color: #0a4a8f;
     font-weight: bold;
     margin-bottom: 4px;
 }
@@ -250,7 +269,7 @@ body {
 }
 
 .peekbtn {
-    background-color: #1a6bbf;
+    background: linear-gradient(90deg, #1a6bbf 0%, #3a8fd4 100%);
     color: white;
     border: none;
     border-radius: 5px;
@@ -258,10 +277,11 @@ body {
     cursor: pointer;
     font-size: 13px;
     width: 100%;
+    transition: opacity 0.2s;
 }
 
 .peekbtn:hover {
-    background-color: #155a9e;
+    opacity: 0.88;
 }
 
 /* SINGLE PRODUCT VIEW */
@@ -274,9 +294,10 @@ body {
 }
 
 #photowrap {
-    border: 1px solid #cce0ff;
+    border: 1px solid #b8d8f8;
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 4px 16px rgba(26, 107, 191, 0.1);
 }
 
 #bigphoto {
@@ -299,7 +320,7 @@ body {
 
 #itemheading {
     font-size: 30px;
-    color: #1a2a3a;
+    color: #0a3a6f;
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -338,17 +359,19 @@ body {
 /* BUTTONS */
 .clickbtn {
     display: inline-block;
-    background-color: #1a6bbf;
+    background: linear-gradient(90deg, #1a6bbf 0%, #3a8fd4 100%);
     color: white;
     border-radius: 5px;
     padding: 10px 24px;
     cursor: pointer;
     font-size: 13px;
     font-weight: bold;
+    transition: opacity 0.2s;
 }
 
 .clickbtn:hover {
-    background-color: #155a9e;
+    opacity: 0.88;
+    color: white;
 }
 
 .tinybtn {
@@ -357,19 +380,20 @@ body {
 }
 
 #fixbtn {
-    background-color: #ffffff;
+    background: none;
     color: #1a6bbf;
     border: 1px solid #aacfee;
 }
 
 #fixbtn:hover {
     background-color: #e8f4ff;
+    opacity: 1;
 }
 
 /* FORMS */
 #productform,
 #shopform {
-    background-color: #ffffff;
+    background: linear-gradient(160deg, #ffffff 0%, #f0f8ff 100%);
     border: 1px solid #cce0ff;
     border-radius: 8px;
     padding: 30px;
@@ -378,6 +402,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    box-shadow: 0 4px 16px rgba(26, 107, 191, 0.08);
 }
 
 #productform label,
@@ -392,10 +417,11 @@ body {
     border-radius: 5px;
     padding: 9px 12px;
     font-size: 14px;
-    background-color: #f0f6ff;
+    background-color: #f5faff;
     color: #1a2a3a;
     outline: none;
     width: 100%;
+    transition: border-color 0.2s, background-color 0.2s;
 }
 
 .myinput:focus {
@@ -412,7 +438,7 @@ body {
 
 #cancelbtn,
 #cancelshopbtn {
-    background-color: #ffffff;
+    background: none;
     color: #556677;
     border: 1px solid #aacfee;
 }
@@ -420,6 +446,7 @@ body {
 #cancelbtn:hover,
 #cancelshopbtn:hover {
     background-color: #f0f6ff;
+    opacity: 1;
 }
 
 /* SHOP TABLE */
@@ -434,10 +461,11 @@ body {
     border: 1px solid #cce0ff;
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 4px 16px rgba(26, 107, 191, 0.08);
 }
 
 #shoptable th {
-    background-color: #1a6bbf;
+    background: linear-gradient(90deg, #0a4a8f 0%, #1a6bbf 100%);
     color: white;
     padding: 13px 20px;
     text-align: left;
@@ -450,6 +478,7 @@ body {
     font-size: 13px;
     color: #334455;
     border-bottom: 1px solid #ddeeff;
+    transition: background-color 0.2s;
 }
 
 #shoptable tr:last-child td {
@@ -457,7 +486,7 @@ body {
 }
 
 #shoptable tr:hover td {
-    background-color: #f0f6ff;
+    background-color: #eef6ff;
 }
 
 /* LOGIN */
@@ -468,19 +497,20 @@ body {
 }
 
 #loginbox {
-    background-color: #ffffff;
-    border: 1px solid #cce0ff;
+    background: linear-gradient(160deg, #ffffff 0%, #eef6ff 100%);
+    border: 1px solid #b8d8f8;
     border-radius: 8px;
     padding: 40px;
     width: 360px;
     display: flex;
     flex-direction: column;
     gap: 13px;
+    box-shadow: 0 8px 28px rgba(26, 107, 191, 0.12);
 }
 
 #loginbox h2 {
     font-size: 20px;
-    color: #1a2a3a;
+    color: #0a3a6f;
     text-align: center;
     font-weight: bold;
     margin-bottom: 6px;
@@ -500,8 +530,8 @@ body {
 
 /* FOOTER */
 #footerbar {
-    background-color: #1a6bbf;
-    padding: 22px 50px;
+    background: linear-gradient(90deg, #0a3a6f 0%, #1a6bbf 50%, #0a3a6f 100%);
+    padding: 26px 50px;
     text-align: center;
     margin-top: 40px;
 }
