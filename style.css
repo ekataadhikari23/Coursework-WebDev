@@ -30,6 +30,16 @@ body {
     font-weight: bold;
     color: white;
     letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Puts a nice little space between the logo and text */
+}
+
+#shoplogo {
+    width: 35px;          /* Sets the size of your navbar logo */
+    height: 35px;         /* Keeps it a perfect square so it can become a circle */
+    border-radius: 50%;   /* This completely clips off the white square corners! */
+    object-fit: cover;    /* Ensures the logo graphics scale clean inside the circle */
 }
 
 #searchzone {
