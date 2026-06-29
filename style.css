@@ -26,13 +26,16 @@ body {
 }
 
 #shoptitle {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
-    color: #ffffff;
+    color: white;
     letter-spacing: 1px;
+}
+
+#brandname {
     display: flex;
     align-items: center;
-    gap: 12px; /* Puts a nice little space between the logo and text */
+    gap: 12px;
 }
 
 #shoplogo {
