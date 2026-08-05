@@ -1,13 +1,13 @@
 // Default Products Array
 let defaultProducts = [
-    { id: 1, name: "Berry Tote Bag", shop: "BerryCo", price: 799, stock: 3, image: "BerryTotebag.webp", desc: "A soft berry-toned tote bag with strong handles and a roomy interior." },
-    { id: 2, name: "Sparky Notebook", shop: "BeeHive", price: 499, stock: 20, image: "SparkyNotebook.webp", desc: "Grid paper notebook for thoughts and design ideas." },
-    { id: 3, name: "Turbo Wash 5000", shop: "SillyStuff", price: 56900, stock: 2, image: "TurboWash.avif", desc: "High performance washing machine unit." },
-    { id: 4, name: "Bees Glass Necklace", shop: "BerryCo", price: 569, stock: 15, image: "BeesGlassNecklace.webp", desc: "Handcrafted crystal necklace." },
-    { id: 5, name: "Mug", shop: "SillyStuff", price: 499, stock: 2, image: "BeesMug.jpeg", desc: "Ceramic coffee mug." },
-    { id: 6, name: "RosyHair Clips", shop: "BerryCo", price: 640, stock: 50, image: "RosyHairClip.jpg", desc: "Cute hair accessory set." },
-    { id: 7, name: "Cute Sticker Pack", shop: "BeeHive", price: 339, stock: 100, image: "StickerPack.webp", desc: "Vinyl aesthetic stickers." },
-    { id: 8, name: "Fluffy Pen", shop: "SillyStuff", price: 99, stock: 4, image: "FluffySillyPen.jpg", desc: "Fun fluffy ballpoint pen." }
+    { id: 1, name: "Berry Tote Bag", shop: "BerryCo 🍒", price: 799, stock: 3, image: "BerryTotebag.webp", desc: "A soft berry-toned tote bag with strong handles and a roomy interior." },
+    { id: 2, name: "Sparky Notebook", shop: "BeeHive 🐝", price: 499, stock: 20, image: "SparkyNotebook.webp", desc: "Grid paper notebook for thoughts and design ideas." },
+    { id: 3, name: "Turbo Wash 5000", shop: "SillyStuff 🎪", price: 56900, stock: 2, image: "TurboWash.avif", desc: "High performance washing machine unit." },
+    { id: 4, name: "Bees Glass Necklace", shop: "BerryCo 🍒", price: 569, stock: 15, image: "BeesGlassNecklace.webp", desc: "Handcrafted crystal necklace." },
+    { id: 5, name: "Mug", shop: "SillyStuff 🎪", price: 499, stock: 2, image: "BeesMug.jpeg", desc: "Ceramic coffee mug." },
+    { id: 6, name: "RosyHair Clips", shop: "BerryCo 🍒", price: 640, stock: 50, image: "RosyHairClip.jpg", desc: "Cute hair accessory set." },
+    { id: 7, name: "Cute Sticker Pack", shop: "BeeHive 🐝", price: 339, stock: 100, image: "StickerPack.webp", desc: "Vinyl aesthetic stickers." },
+    { id: 8, name: "Fluffy Pen", shop: "SillyStuff 🎪", price: 99, stock: 4, image: "FluffySillyPen.jpg", desc: "Fun fluffy ballpoint pen." }
 ];
 
 // Default Suppliers Array
@@ -17,7 +17,7 @@ let defaultSuppliers = [
     { id: 3, name: "SillyStuff 🎪", email: "hehe@sillystuff.com", phone: "+977-9867891234" }
 ];
 
-// Load saved data from localStorage or use defaults
+// Load saved data from localStorage or fallback to defaults
 let products = JSON.parse(localStorage.getItem("my_products")) || defaultProducts;
 let suppliers = JSON.parse(localStorage.getItem("my_suppliers")) || defaultSuppliers;
 let isAdminLoggedIn = localStorage.getItem("is_admin") === "true";
@@ -27,14 +27,40 @@ let editingProductId = null;
 let editingSupplierId = null;
 let currentViewingProduct = null;
 
-// Helper to save data back to localStorage
+// Helper to save all arrays and state into localStorage
 function saveAllData() {
     localStorage.setItem("my_products", JSON.stringify(products));
     localStorage.setItem("my_suppliers", JSON.stringify(suppliers));
     localStorage.setItem("is_admin", isAdminLoggedIn ? "true" : "false");
 }
 
-// Check and display Admin UI status on start
+// Function to update dropdowns dynamically with saved suppliers
+function updateSupplierDropdowns() {
+    const filterSelect = document.getElementById("shopfilter");
+    const formSelect = document.getElementById("prodSupplier");
+
+    if (filterSelect) {
+        filterSelect.innerHTML = `<option value="">All Suppliers</option>`;
+        suppliers.forEach(sup => {
+            const opt = document.createElement("option");
+            opt.value = sup.name;
+            opt.textContent = sup.name;
+            filterSelect.appendChild(opt);
+        });
+    }
+
+    if (formSelect) {
+        formSelect.innerHTML = `<option value="">Select a supplier</option>`;
+        suppliers.forEach(sup => {
+            const opt = document.createElement("option");
+            opt.value = sup.name;
+            opt.textContent = sup.name;
+            formSelect.appendChild(opt);
+        });
+    }
+}
+
+// Display Admin controls depending on login status
 function updateAdminUI() {
     if (isAdminLoggedIn) {
         document.getElementById("navSuppliers").style.display = "inline";
@@ -47,7 +73,7 @@ function updateAdminUI() {
     }
 }
 
-// Page Navigation Logic
+// Navigation between sections
 function showPage(pageId) {
     const sections = ["herobanner", "filterstrip", "allproducts", "singleitem", "addstuff", "shoplist", "addshop", "loginpage"];
     
@@ -98,7 +124,7 @@ function renderGrid(items) {
     });
 }
 
-// View Single Product Page
+// Single Product Page
 window.openSingleProduct = function(id) {
     const item = products.find(p => p.id === id);
     if (!item) return;
@@ -123,7 +149,6 @@ window.openSingleProduct = function(id) {
     showPage("singleitem");
 };
 
-// Open Product Edit Form directly from View Page
 document.getElementById("fixbtn").addEventListener("click", () => {
     if (!isAdminLoggedIn) {
         document.getElementById("loginModal").style.display = "flex";
@@ -140,14 +165,13 @@ function openEditProductForm(item) {
     document.getElementById("prodDesc").value = item.desc || "";
     document.getElementById("prodPrice").value = item.price;
     document.getElementById("prodQty").value = item.stock;
-    document.getElementById("prodSupplier").value = item.shop.replace(/ 🍒| 🐝| 🎪/g, "");
+    document.getElementById("prodSupplier").value = item.shop;
     uploadedImageBase64 = item.image;
     
     document.getElementById("formTitle").innerText = "Edit Product";
     showPage("addstuff");
 }
 
-// Manage Products Button on Hero Banner
 document.getElementById("herobtn").addEventListener("click", () => {
     if (!isAdminLoggedIn) {
         document.getElementById("loginModal").style.display = "flex";
@@ -159,7 +183,7 @@ document.getElementById("herobtn").addEventListener("click", () => {
     }
 });
 
-// Modal Actions
+// Modal Logic
 document.getElementById("modalCloseBtn").addEventListener("click", () => {
     document.getElementById("loginModal").style.display = "none";
 });
@@ -169,7 +193,7 @@ document.getElementById("modalLoginBtn").addEventListener("click", () => {
     showPage("loginpage");
 });
 
-// Top Navigation Links & Logout Toggle
+// Navigation Click Actions
 document.getElementById("navLogin").addEventListener("click", () => {
     if (isAdminLoggedIn) {
         isAdminLoggedIn = false;
@@ -186,23 +210,28 @@ document.getElementById("navInventory").addEventListener("click", () => {
     renderGrid(products);
     showPage("allproducts");
 });
+
 document.getElementById("navSuppliers").addEventListener("click", () => {
     renderSuppliers();
     showPage("shoplist");
 });
+
 document.getElementById("navAddProduct").addEventListener("click", () => {
     clearProductForm();
     editingProductId = null;
     document.getElementById("formTitle").innerText = "Add Product";
     showPage("addstuff");
 });
+
 document.getElementById("backBtn").addEventListener("click", () => showPage("allproducts"));
+
 document.getElementById("addShopBtn").addEventListener("click", () => {
     clearSupplierForm();
     editingSupplierId = null;
     document.getElementById("supplierFormTitle").innerText = "Add Supplier";
     showPage("addshop");
 });
+
 document.getElementById("cancelbtn").addEventListener("click", () => showPage("allproducts"));
 document.getElementById("cancelshopbtn").addEventListener("click", () => showPage("shoplist"));
 
@@ -224,7 +253,7 @@ document.getElementById("enterbtn").addEventListener("click", function() {
     }
 });
 
-// Image Upload Handler
+// Image Upload
 document.getElementById("photoupload").addEventListener("change", function(e) {
     const file = e.target.files[0];
     if (file) {
@@ -236,7 +265,7 @@ document.getElementById("photoupload").addEventListener("change", function(e) {
     }
 });
 
-// Save / Update Product
+// Save or Edit Product
 document.getElementById("savebtn").addEventListener("click", function() {
     const name = document.getElementById("prodName").value.trim();
     const desc = document.getElementById("prodDesc").value.trim();
@@ -296,7 +325,7 @@ function clearProductForm() {
     editingProductId = null;
 }
 
-// Supplier Table Operations
+// Supplier List Rendering & Actions
 function renderSuppliers() {
     const tbody = document.getElementById("supplierTableBody");
     tbody.innerHTML = "";
@@ -321,7 +350,7 @@ window.editSupplier = function(id) {
     if (!sup) return;
 
     editingSupplierId = id;
-    document.getElementById("supName").value = sup.name.replace(/ 🍒| 🐝| 🎪/g, "");
+    document.getElementById("supName").value = sup.name;
     document.getElementById("supEmail").value = sup.email;
     document.getElementById("supPhone").value = sup.phone;
 
@@ -333,6 +362,7 @@ window.deleteSupplier = function(id) {
     if (confirm("Are you sure you want to remove this supplier?")) {
         suppliers = suppliers.filter(s => s.id !== id);
         saveAllData();
+        updateSupplierDropdowns();
         renderSuppliers();
     }
 };
@@ -364,6 +394,7 @@ document.getElementById("saveshopbtn").addEventListener("click", function() {
     }
 
     saveAllData();
+    updateSupplierDropdowns();
     renderSuppliers();
     showPage("shoplist");
     clearSupplierForm();
@@ -376,7 +407,7 @@ function clearSupplierForm() {
     editingSupplierId = null;
 }
 
-// Search and Filter Logic
+// Search and Filter Functions
 function filterProducts() {
     const query = document.getElementById("searchBox").value.toLowerCase();
     const selectedShop = document.getElementById("shopfilter").value;
@@ -384,7 +415,7 @@ function filterProducts() {
 
     let filtered = products.filter(p => {
         const matchesName = p.name.toLowerCase().includes(query);
-        const matchesShop = selectedShop === "" || p.shop.includes(selectedShop);
+        const matchesShop = selectedShop === "" || p.shop === selectedShop;
         return matchesName && matchesShop;
     });
 
@@ -402,7 +433,8 @@ document.getElementById("searchBox").addEventListener("keyup", filterProducts);
 document.getElementById("shopfilter").addEventListener("change", filterProducts);
 document.getElementById("sortpick").addEventListener("change", filterProducts);
 
-// Initial Load Setup
+// Initialization
+updateSupplierDropdowns();
 updateAdminUI();
 renderGrid(products);
 renderSuppliers();
