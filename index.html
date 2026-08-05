@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ekta's Shop</title>
+    <title>Ekata's Shop - Admin Portal</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/8acce1427f.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
 <section id="topbar">
     <div id="brandname">
         <img src="Logo.png" alt="Ekata's Shop Logo" id="shoplogo"> 
@@ -18,23 +19,26 @@
         <button id="gobutton">Search</button>
     </div>
     <div id="rightside">
-        <span class="toplink"><i class="fa-regular fa-user"></i> Login</span>
-        <span class="toplink"><i class="fa-solid fa-cart-shopping"></i> Cart</span>
+        <span class="toplink" id="navLogin"><i class="fa-regular fa-user"></i> Login</span>
+        <span class="toplink" id="navInventory"><i class="fa-solid fa-boxes-stacked"></i> Inventory</span>
+        <span class="toplink" id="navSuppliers" style="display:none;"><i class="fa-solid fa-truck"></i> Suppliers</span>
+        <span class="toplink" id="navAddProduct" style="display:none;"><i class="fa-solid fa-plus"></i> Add Product</span>
     </div>
 </section>
 
+<!-- HERO BANNER (REPURPOSED FOR ADMIN) -->
 <section id="herobanner">
     <div id="herotext">
-        <h1 id="herotitle">Good stuff, great prices.</h1>
-        <p id="herosub">Shop handpicked items from BerryCo, BeeHive and SillyStuff — delivered to your door.</p>
-        <span id="herobtn">Shop Now</span>
+        <h1 id="herotitle">Inventory & Supplier Control Panel</h1>
+        <p id="herosub">Track stock levels, manage store suppliers, and update products in real-time.</p>
+        <span id="herobtn">Manage Products</span>
     </div>
 </section>
 
 <section id="filterstrip">
-    <label for="shopfilter">Filter by shop:</label>
+    <label for="shopfilter">Filter by supplier:</label>
     <select id="shopfilter">
-        <option value="">All Shops</option>
+        <option value="">All Suppliers</option>
         <option value="BerryCo">BerryCo 🍒</option>
         <option value="BeeHive">BeeHive 🐝</option>
         <option value="SillyStuff">SillyStuff 🎪</option>
@@ -47,122 +51,16 @@
     </select>
 </section>
 
+<!-- ALL PRODUCTS / INVENTORY LIST -->
 <section id="allproducts">
     <h2 class="bigtitle">All Products</h2>
     <div id="cardgrid">
-
-        <div class="itemcard">
-            <div class="photowrapper">
-                <img src="BerryTotebag.webp" alt="Berry Tote Bag" class="itemphoto">
-                <span class="badgelabel almostgonebadge">Low Stock</span>
-            </div>
-            <div class="iteminfo">
-                <p class="itemshop">BerryCo 🍒</p>
-                <h3 class="itemname">Berry Tote Bag</h3>
-                <p class="itemprice">Rs. 799</p>
-                <p class="itemstock almostgone">Only 3 left!</p>
-                <button class="peekbtn">View Product</button>
-            </div>
-        </div>
-
-        <div class="itemcard">
-            <div class="photowrapper">
-                <img src="SparkyNotebook.webp" alt="Sparky Notebook" class="itemphoto">
-            </div>
-            <div class="iteminfo">
-                <p class="itemshop">BeeHive 🐝</p>
-                <h3 class="itemname">Sparky Notebook</h3>
-                <p class="itemprice">Rs. 499</p>
-                <p class="itemstock">In stock: 20</p>
-                <button class="peekbtn">View Product</button>
-            </div>
-        </div>
-
-        <div class="itemcard ekta-biggycard">
-            <div class="photowrapper">
-                <img src="TurboWash.avif" alt="Mega Clean Washing Machine" class="itemphoto">
-                <span class="badgelabel almostgonebadge">Low Stock</span>
-            </div>
-            <div class="iteminfo">
-                <p class="itemshop">SillyStuff 🎪</p>
-                <h3 class="itemname">Turbo Wash 5000</h3>
-                <p class="itemprice">Rs. 56,900</p>
-                <p class="itemstock almostgone">Only 2 left!</p>
-                <button class="peekbtn">View Product</button>
-            </div>
-        </div>
-
-        <div class="itemcard ekta-biggycard">
-            <div class="photowrapper">
-                <img src="BeesGlassNecklace.webp" alt="Bees Crystal Necklace" class="itemphoto">
-            </div>
-            <div class="iteminfo">
-                <p class="itemshop">BerryCo 🍒</p>
-                <h3 class="itemname">Bees Glass Necklace</h3>
-                <p class="itemprice">Rs. 569</p>
-                <p class="itemstock">In stock: 15</p>
-                <button class="peekbtn">View Product</button>
-            </div>
-        </div>
-
-        <div class="itemcard">
-            <div class="photowrapper">
-                <img src="BeesMug.jpeg" alt="Bees Mug" class="itemphoto">
-                <span class="badgelabel almostgonebadge">Low Stock</span>
-            </div>
-            <div class="iteminfo">
-                <p class="itemshop">SillyStuff 🎪</p>
-                <h3 class="itemname">Mug</h3>
-                <p class="itemprice">Rs. 499</p>
-                <p class="itemstock almostgone">Only 2 left!</p>
-                <button class="peekbtn">View Product</button>
-            </div>
-        </div>
-
-        <div class="itemcard">
-            <div class="photowrapper">
-                <img src="RosyHairClip.jpg" alt="Rosy Hair Clips" class="itemphoto">
-            </div>
-            <div class="iteminfo">
-                <p class="itemshop">BerryCo 🍒</p>
-                <h3 class="itemname">RosyHair Clips</h3>
-                <p class="itemprice">Rs. 640</p>
-                <p class="itemstock">In stock: 50</p>
-                <button class="peekbtn">View Product</button>
-            </div>
-        </div>
-
-        <div class="itemcard">
-            <div class="photowrapper">
-                <img src="StickerPack.webp" alt="Sticker Pack" class="itemphoto">
-            </div>
-            <div class="iteminfo">
-                <p class="itemshop">BeeHive 🐝</p>
-                <h3 class="itemname">Cute Sticker Pack</h3>
-                <p class="itemprice">Rs. 339</p>
-                <p class="itemstock">In stock: 100</p>
-                <button class="peekbtn">View Product</button>
-            </div>
-        </div>
-
-        <div class="itemcard">
-            <div class="photowrapper">
-                <img src="FluffySillyPen.jpg" alt="Fluffy Pen" class="itemphoto">
-                <span class="badgelabel almostgonebadge">Low Stock</span>
-            </div>
-            <div class="iteminfo">
-                <p class="itemshop">SillyStuff 🎪</p>
-                <h3 class="itemname">Fluffy Pen</h3>
-                <p class="itemprice">Rs. 99</p>
-                <p class="itemstock almostgone">Only 4 left!</p>
-                <button class="peekbtn">View Product</button>
-            </div>
-        </div>
-
+        <!-- Rendered dynamically by script.js -->
     </div>
 </section>
 
-<section id="singleitem">
+<!-- VIEW PRODUCT PAGE -->
+<section id="singleitem" style="display: none;">
     <h2 class="bigtitle">Product Details</h2>
     <div id="itemrow">
         <div id="photowrap">
@@ -171,42 +69,43 @@
         <div id="itemwords">
             <p id="breadcrumb">Home &gt; BerryCo &gt; Berry Tote Bag</p>
             <h1 id="itemheading">Berry Tote Bag</h1>
-            <p id="itembigprice">Rs. 1,699</p>
+            <p id="itembigprice">Rs. 799</p>
             <p id="stockwarning" class="almostgone">⚠ Only 3 left in stock</p>
-            <p id="itemdesc">A soft berry-toned tote bag with strong handles and a roomy interior. Great for everyday use — fits your laptop, snacks, everything.</p>
-            <p id="shopname">Sold by: <strong>BerryCo 🍒</strong></p>
+            <p id="itemdesc">A soft berry-toned tote bag with strong handles and a roomy interior.</p>
+            <p id="shopname">Supplier: <strong id="singleSupplier">BerryCo 🍒</strong></p>
             <div id="twobtns">
-                <span class="clickbtn" id="bagbtn">Add to Cart</span>
+                <span class="clickbtn" id="backBtn">Back to Products</span>
                 <span class="clickbtn" id="fixbtn">Edit Product</span>
             </div>
         </div>
     </div>
 </section>
 
-<section id="addstuff">
-    <h2 class="bigtitle">Add / Edit Product</h2>
+<!-- ADD / EDIT PRODUCT PAGE -->
+<section id="addstuff" style="display: none;">
+    <h2 class="bigtitle" id="formTitle">Add / Edit Product</h2>
     <div id="productform">
-        <label>Product Name</label>
-        <input type="text" placeholder="e.g. Berry Tote Bag" class="myinput">
+        <label for="prodName">Product Name</label>
+        <input type="text" id="prodName" placeholder="e.g. Berry Tote Bag" class="myinput">
 
-        <label>Description</label>
-        <input type="text" placeholder="Short description of the product" class="myinput">
+        <label for="prodDesc">Description</label>
+        <input type="text" id="prodDesc" placeholder="Short description of the product" class="myinput">
 
-        <label>Price (Rs.)</label>
-        <input type="number" placeholder="0" min="0" class="myinput">
+        <label for="prodPrice">Price (Rs.)</label>
+        <input type="number" id="prodPrice" placeholder="0" min="0" class="myinput">
 
-        <label>Quantity in Stock</label>
-        <input type="number" placeholder="0" min="0" class="myinput">
+        <label for="prodQty">Quantity in Stock</label>
+        <input type="number" id="prodQty" placeholder="0" min="0" class="myinput">
 
-        <label>Shop</label>
-        <select class="myinput">
-            <option value="">Select a shop</option>
+        <label for="prodSupplier">Supplier Dropdown</label>
+        <select id="prodSupplier" class="myinput">
+            <option value="">Select a supplier</option>
             <option value="BerryCo">BerryCo 🍒</option>
             <option value="BeeHive">BeeHive 🐝</option>
             <option value="SillyStuff">SillyStuff 🎪</option>
         </select>
 
-        <label>Product Photo</label>
+        <label for="photoupload">Product Photo</label>
         <input type="file" accept="image/*" class="myinput" id="photoupload">
 
         <div id="savecancelrow">
@@ -216,70 +115,72 @@
     </div>
 </section>
 
-<section id="shoplist">
-    <h2 class="bigtitle">All Shops</h2>
+<!-- SUPPLIER LIST PAGE -->
+<section id="shoplist" style="display: none;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-right:50px;">
+        <h2 class="bigtitle">All Suppliers</h2>
+        <span class="clickbtn" id="addShopBtn"><i class="fa-solid fa-plus"></i> Add Supplier</span>
+    </div>
     <table id="shoptable">
         <thead>
             <tr>
-                <th>Shop Name</th>
+                <th>Supplier Name</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>BerryCo 🍒</td>
-                <td>berry@berryco.com</td>
-                <td>+977-9812345678</td>
-                <td><span class="clickbtn tinybtn">Edit</span></td>
-            </tr>
-            <tr>
-                <td>BeeHive 🐝</td>
-                <td>buzz@beehive.com</td>
-                <td>+977-9845678901</td>
-                <td><span class="clickbtn tinybtn">Edit</span></td>
-            </tr>
-            <tr>
-                <td>SillyStuff 🎪</td>
-                <td>hehe@sillystuff.com</td>
-                <td>+977-9867891234</td>
-                <td><span class="clickbtn tinybtn">Edit</span></td>
-            </tr>
+        <tbody id="supplierTableBody">
+            <!-- Rendered dynamically by script.js -->
         </tbody>
     </table>
 </section>
 
-<section id="addshop">
-    <h2 class="bigtitle">Add / Edit Shop</h2>
+<!-- ADD / EDIT SUPPLIER PAGE -->
+<section id="addshop" style="display: none;">
+    <h2 class="bigtitle" id="supplierFormTitle">Add / Edit Supplier</h2>
     <div id="shopform">
-        <label>Shop Name</label>
-        <input type="text" placeholder="e.g. BerryCo" class="myinput">
+        <label for="supName">Supplier Name</label>
+        <input type="text" id="supName" placeholder="e.g. BerryCo" class="myinput">
 
-        <label>Contact Email</label>
-        <input type="email" placeholder="shop@email.com" class="myinput">
+        <label for="supEmail">Contact Email</label>
+        <input type="email" id="supEmail" placeholder="shop@email.com" class="myinput">
 
-        <label>Phone Number</label>
-        <input type="text" placeholder="+977-98XXXXXXXX" class="myinput">
+        <label for="supPhone">Phone Number</label>
+        <input type="text" id="supPhone" placeholder="+977-98XXXXXXXX" class="myinput">
 
         <div id="shopsavecancelrow">
-            <span class="clickbtn" id="saveshopbtn">Save Shop</span>
+            <span class="clickbtn" id="saveshopbtn">Save Supplier</span>
             <span class="clickbtn" id="cancelshopbtn">Cancel</span>
         </div>
     </div>
 </section>
 
-<section id="loginpage">
+<!-- ADMIN LOGIN PAGE (TRIGGERED VIA LOGIN BUTTON) -->
+<section id="loginpage" style="display: none;">
     <div id="loginbox">
         <h2>Admin Login</h2>
-        <label>Username</label>
-        <input type="text" placeholder="Enter username" class="myinput">
-        <label>Password</label>
-        <input type="password" placeholder="Enter password" class="myinput">
+        <label for="adminUser">Username</label>
+        <input type="text" id="adminUser" placeholder="Enter username" class="myinput">
+        <label for="adminPass">Password</label>
+        <input type="password" id="adminPass" placeholder="Enter password" class="myinput">
         <span class="clickbtn" id="enterbtn">Log In</span>
-        <p id="wrongmsg">Wrong username or password. Try again.</p>
+        <p id="wrongmsg">Wrong username or password. Try admin / admin123</p>
     </div>
 </section>
+
+<!-- POPUP MODAL FOR LOGIN REQUIRED -->
+<div id="loginModal" class="modal-overlay" style="display: none;">
+    <div class="modal-box">
+        <div class="modal-icon"><i class="fa-solid fa-lock"></i></div>
+        <h3>Admin Access Required</h3>
+        <p>You need administrator privileges to manage products and inventory levels. Please log in to proceed.</p>
+        <div class="modal-buttons">
+            <span class="clickbtn" id="modalLoginBtn">Go to Login</span>
+            <span class="clickbtn cancel-modal" id="modalCloseBtn">Close</span>
+        </div>
+    </div>
+</div>
 
 <section id="footerbar">
     <p>© 2026 Ekta's Shop &nbsp;|&nbsp; BerryCo · BeeHive · SillyStuff &nbsp;|&nbsp; All rights reserved.</p>

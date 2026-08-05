@@ -7,7 +7,6 @@
 }
 
 body {
-    /* Richer, deeply layered blue sky blending flow across the background stack */
     background: linear-gradient(145deg, #e3f0ff 0%, #cce3fd 35%, #a4cdfc 70%, #7db5f8 100%);
     background-attachment: fixed;
     min-height: 100vh;
@@ -39,10 +38,10 @@ body {
 }
 
 #shoplogo {
-    width: 35px;          /* Sets the size of navbar logo */
-    height: 35px;         /* Keeps it a perfect square so it can become a circle */
-    border-radius: 50%;   /* This completely clips off the white square corners! */
-    object-fit: cover;    /* Ensures the logo graphics scale clean inside the circle */
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 #searchzone {
@@ -102,7 +101,7 @@ body {
     color: #e6f2ff;
 }
 
-/* HERO BANNER WITH INTEGRATED IMAGE LAYOUT */
+/* HERO BANNER */
 #herobanner {
     background: linear-gradient(135deg, rgba(6, 40, 79, 0.45) 0%, rgba(19, 82, 148, 0.35) 100%), 
                 url('COVER.png');   
@@ -149,25 +148,6 @@ body {
     transform: scale(1.03);
 }
 
-/* Custom organic-named box container for your new banner image choice */
-#ekataa-hero-picbox {
-    flex: 1;
-    min-width: 280px;
-    max-width: 420px;
-    display: flex;
-    justify-content: center;
-}
-
-#bramh-bannerimg {
-    width: 100%;
-    height: auto;
-    max-height: 250px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-}
-
 /* FILTER STRIP */
 #filterstrip {
     background: linear-gradient(90deg, #e9f3fd 0%, #f4f9ff 50%, #e9f3fd 100%);
@@ -195,10 +175,6 @@ body {
     outline: none;
 }
 
-#shopfilter:focus, #sortpick:focus {
-    border-color: #165ca4;
-}
-
 /* PAGE TITLES */
 .bigtitle {
     font-size: 22px;
@@ -210,7 +186,7 @@ body {
     display: block;
 }
 
-/* PRODUCT GRID - Made slightly larger and less purely stark white */
+/* PRODUCT GRID */
 #cardgrid {
     display: flex;
     flex-wrap: wrap;
@@ -218,12 +194,11 @@ body {
     padding: 0 50px 50px 50px;
 }
 
-/* Base card tweaked to feel a tiny bit larger and seamlessly colored */
 .itemcard {
-    background: linear-gradient(160deg, #f7fbe6 0%, #ebf4ff 100%); /* soft beautiful cream blend to ice blue */
+    background: linear-gradient(160deg, #f7fbe6 0%, #ebf4ff 100%);
     border: 1px solid #abcff5;
     border-radius: 10px;
-    width: 225px; /* Bumped up visually from 210px for that tiny bit extra size */
+    width: 225px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(9, 61, 117, 0.06);
     transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
@@ -241,7 +216,7 @@ body {
 
 .itemphoto {
     width: 100%;
-    height: 175px; /* Tiny bit taller image presentation */
+    height: 175px;
     object-fit: cover;
     display: block;
 }
@@ -280,7 +255,7 @@ body {
     font-weight: bold;
     color: #1e2d3d;
     margin-bottom: 6px;
-    min-height: 34px; /* Keeps card shapes aligned perfectly even with dual line items */
+    min-height: 34px;
 }
 
 .itemprice {
@@ -385,7 +360,7 @@ body {
     flex-wrap: wrap;
 }
 
-/* FORM ELEMENTS AND DIALOGS */
+/* FORMS AND DIALOGS */
 #productform, #shopform {
     background: linear-gradient(160deg, #ffffff 0%, #e1efff 100%);
     border: 1px solid #9ec6f0;
@@ -448,16 +423,27 @@ body {
 .tinybtn {
     padding: 6px 14px;
     font-size: 12px;
+    margin-right: 4px;
 }
 
-#fixbtn, #cancelbtn, #cancelshopbtn {
+.delbtn {
+    background: #ffebeb;
+    color: #c92a2a;
+    border: 1px solid #ffc9c9;
+}
+
+.delbtn:hover {
+    background-color: #ffd6d6;
+}
+
+#fixbtn, #cancelbtn, #cancelshopbtn, #backBtn {
     background: none;
     color: #165ca4;
     border: 1px solid #9dc7f2;
     background-color: #f0f7ff;
 }
 
-#fixbtn:hover, #cancelbtn:hover, #cancelshopbtn:hover {
+#fixbtn:hover, #cancelbtn:hover, #cancelshopbtn:hover, #backBtn:hover {
     background-color: #e1efff;
 }
 
@@ -500,7 +486,7 @@ body {
 #loginpage {
     display: flex;
     justify-content: center;
-    padding: 80px 20px;
+    padding: 60px 20px;
 }
 
 #loginbox {
@@ -536,6 +522,62 @@ body {
     font-weight: bold;
 }
 
+/* POPUP MODAL STYLING */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(6, 40, 79, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: #ffffff;
+    border: 1px solid #9dc7f2;
+    border-radius: 10px;
+    padding: 30px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(9, 61, 117, 0.2);
+}
+
+.modal-icon {
+    font-size: 32px;
+    color: #165ca4;
+    margin-bottom: 12px;
+}
+
+.modal-box h3 {
+    font-size: 18px;
+    color: #06284f;
+    margin-bottom: 10px;
+}
+
+.modal-box p {
+    font-size: 13px;
+    color: #52667a;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.cancel-modal {
+    background: none !important;
+    color: #165ca4 !important;
+    border: 1px solid #9dc7f2 !important;
+    background-color: #f0f7ff !important;
+}
+
 /* FOOTER AREA */
 #footerbar {
     background: linear-gradient(90deg, #06284f 0%, #135294 50%, #06284f 100%);
@@ -549,7 +591,7 @@ body {
     font-size: 13px;
 }
 
-/* SCREEN ADAPTABILITY MEDIA BREAKPOINT */
+/* RESPONSIVE DESIGN */
 @media screen and (max-width: 800px) {
     #topbar {
         flex-direction: column;
@@ -561,11 +603,6 @@ body {
     }
     #herobanner {
         padding: 40px 20px;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    #ekataa-hero-picbox {
-        max-width: 100%;
     }
     #herotitle {
         font-size: 28px;
