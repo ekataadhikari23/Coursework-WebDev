@@ -13,11 +13,11 @@ exports.getCategories = async (req, res) => {
 // Create a new category/supplier
 exports.createCategory = async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, email, phone } = req.body;
     if (!name) {
       return res.status(400).json({ error: 'Category name is required' });
     }
-    const newCategory = await Category.create({ name });
+    const newCategory = await Category.create({ name, email, phone });
     res.status(201).json(newCategory);
   } catch (err) {
     res.status(500).json({ error: 'Failed to create category' });
