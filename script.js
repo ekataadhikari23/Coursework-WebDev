@@ -133,9 +133,13 @@ function renderGrid(items) {
                 <h3 class="itemname">${item.name}</h3>
                 <p class="itemprice">Rs. ${item.price}</p>
                 <p class="itemstock ${isLow ? 'almostgone' : ''}">${isLow ? `Only ${item.stock} left!` : `In stock: ${item.stock}`}</p>
-                <button class="peekbtn" onclick="openSingleProduct(${item.id})">View Product</button>
+                <button class="peekbtn" type="button">View Product</button>
             </div>
         `;
+
+        const viewButton = card.querySelector(".peekbtn");
+        viewButton.addEventListener("click", () => openSingleProduct(item.id));
+
         grid.appendChild(card);
     });
 }
@@ -182,7 +186,7 @@ function openEditProductForm(item) {
     document.getElementById("prodQty").value = item.stock;
     document.getElementById("prodSupplier").value = item.supplier_id ?? "";
     uploadedPhotoFile = null;
-
+    document.getElementById("deletebtn").style.display = "inline-block";
     document.getElementById("formTitle").innerText = "Edit Product";
     showPage("addstuff");
 }
@@ -280,6 +284,7 @@ document.getElementById("savebtn").addEventListener("click", async function () {
     const price = document.getElementById("prodPrice").value;
     const qty = document.getElementById("prodQty").value;
     const supplierId = document.getElementById("prodSupplier").value;
+    
 
     if (!name || !supplierId || price === "" || qty === "") {
         alert("Please fill out all required fields.");
@@ -319,6 +324,26 @@ document.getElementById("savebtn").addEventListener("click", async function () {
     clearProductForm();
 });
 
+document.getElementById("deletebtn").addEventListener("click", async function () {
+    if (!editingProductId) {
+        return;
+    }
+
+    if (!confirm("Are you sure you want to delete this product?")) {
+        return;
+    }
+
+    const result = await apiPostJSON("delete_product.php", { id: editingProductId });
+    if (!result.success) {
+        alert(result.message || "Could not delete product.");
+        return;
+    }
+
+    await loadProducts();
+    showPage("allproducts");
+    clearProductForm();
+});
+
 function clearProductForm() {
     document.getElementById("prodName").value = "";
     document.getElementById("prodDesc").value = "";
@@ -326,6 +351,7 @@ function clearProductForm() {
     document.getElementById("prodQty").value = "";
     document.getElementById("prodSupplier").value = "";
     document.getElementById("photoupload").value = "";
+    document.getElementById("deletebtn").style.display = "none";
     uploadedPhotoFile = null;
     editingProductId = null;
 }
