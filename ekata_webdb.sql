@@ -1,9 +1,3 @@
-CREATE DATABASE IF NOT EXISTS ekata_webdb
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
-
-USE ekata_webdb;
-
 DROP TABLE IF EXISTS suppliers;
 CREATE TABLE suppliers (
     id INT AUTO_INCREMENT PRIMARY KEY,

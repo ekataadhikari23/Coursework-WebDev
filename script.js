@@ -9,6 +9,8 @@ let editingProductId = null;
 let editingSupplierId = null;
 let currentViewingProduct = null;
 
+
+//async used so we can use await inside it to pause and wait for something slow (like a network request) without freezzingthe whole page.
 async function apiGet(endpoint) {
     const res = await fetch(API_BASE + endpoint);
     return res.json();
@@ -23,6 +25,8 @@ async function apiPostJSON(endpoint, data) {
     return res.json();
 }
 
+
+// FormData is the only way my app uploads product photos.
 async function apiPostForm(endpoint, formData) {
     const res = await fetch(API_BASE + endpoint, {
         method: "POST",
@@ -46,7 +50,7 @@ async function loadSuppliers() {
 
 async function checkSession() {
     const result = await apiGet("check_session.php");
-    isAdminLoggedIn = !!result.loggedIn;
+    isAdminLoggedIn = !!result.loggedIn; // no matter what type result.loggedIn actually was !! force it into a clean, real true or false."
     updateAdminUI();
 }
 
@@ -144,6 +148,9 @@ function renderGrid(items) {
     });
 }
 
+
+
+// actually opens the view page and shows the detals of the product
 function openSingleProduct (id) {
     const item = products.find(p => p.id === id);
     if (!item) return;
@@ -168,6 +175,9 @@ function openSingleProduct (id) {
     showPage("singleitem");
 };
 
+
+
+//if a regular visitor clicks editproduct, they get my "Admin Access Required" popup
 document.getElementById("fixbtn").addEventListener("click", () => {
     if (!isAdminLoggedIn) {
         document.getElementById("loginModal").style.display = "flex";
@@ -178,6 +188,8 @@ document.getElementById("fixbtn").addEventListener("click", () => {
     }
 });
 
+
+//edit page opens and this decides what to show
 function openEditProductForm(item) {
     editingProductId = item.id;
     document.getElementById("prodName").value = item.name;
@@ -191,6 +203,9 @@ function openEditProductForm(item) {
     showPage("addstuff");
 }
 
+
+
+//big manageproduct button
 document.getElementById("herobtn").addEventListener("click", () => {
     if (!isAdminLoggedIn) {
         document.getElementById("loginModal").style.display = "flex";
@@ -202,7 +217,7 @@ document.getElementById("herobtn").addEventListener("click", () => {
     }
 });
 
-// Modal Logic
+// Click on "cancel" or "Go to login page" popup controller
 document.getElementById("modalCloseBtn").addEventListener("click", () => {
     document.getElementById("loginModal").style.display = "none";
 });
@@ -212,7 +227,9 @@ document.getElementById("modalLoginBtn").addEventListener("click", () => {
     showPage("loginpage");
 });
 
-// Navigation Click Actions
+
+
+// if clicked logout removes admin previleges
 document.getElementById("navLogin").addEventListener("click", async () => {
     if (isAdminLoggedIn) {
         await apiPostJSON("logout.php", {});
@@ -225,16 +242,20 @@ document.getElementById("navLogin").addEventListener("click", async () => {
     }
 });
 
+
+// clicking on inventory
 document.getElementById("navInventory").addEventListener("click", () => {
     renderGrid(products);
     showPage("allproducts");
 });
 
+// clicking on suppliers
 document.getElementById("navSuppliers").addEventListener("click", () => {
     renderSuppliers();
     showPage("shoplist");
 });
 
+//Clicking add product
 document.getElementById("navAddProduct").addEventListener("click", () => {
     clearProductForm();
     editingProductId = null;
@@ -242,14 +263,19 @@ document.getElementById("navAddProduct").addEventListener("click", () => {
     showPage("addstuff");
 });
 
+
+// Clicking back to products
 document.getElementById("backBtn").addEventListener("click", () => showPage("allproducts"));
 
+
+// Clicking "add supplier"
 document.getElementById("addShopBtn").addEventListener("click", () => {
     clearSupplierForm();
     editingSupplierId = null;
     document.getElementById("supplierFormTitle").innerText = "Add Supplier";
     showPage("addshop");
 });
+
 
 document.getElementById("cancelbtn").addEventListener("click", () => showPage("allproducts"));
 document.getElementById("cancelshopbtn").addEventListener("click", () => showPage("shoplist"));
@@ -273,6 +299,7 @@ document.getElementById("enterbtn").addEventListener("click", async function () 
     }
 });
 
+// photo adding on "Add product"
 document.getElementById("photoupload").addEventListener("change", function (e) {
     uploadedPhotoFile = e.target.files[0] || null;
 });
@@ -306,6 +333,7 @@ document.getElementById("savebtn").addEventListener("click", async function () {
         formData.append("photo", uploadedPhotoFile);
     }
 
+    //update or edit 
     let result;
     if (editingProductId) {
         formData.append("id", editingProductId);
@@ -324,6 +352,8 @@ document.getElementById("savebtn").addEventListener("click", async function () {
     clearProductForm();
 });
 
+
+//delete product button
 document.getElementById("deletebtn").addEventListener("click", async function () {
     if (!editingProductId) {
         return;
@@ -356,7 +386,7 @@ function clearProductForm() {
     editingProductId = null;
 }
 
-// Supplier List Rendering & Actions
+// this builds my Supplier List table one row for each supplier
 function renderSuppliers() {
     const tbody = document.getElementById("supplierTableBody");
     tbody.innerHTML = "";
@@ -376,6 +406,8 @@ function renderSuppliers() {
     });
 }
 
+
+//Edit supplier page opens
 window.editSupplier = function (id) {
     const sup = suppliers.find(s => s.id === id);
     if (!sup) return;
@@ -389,6 +421,8 @@ window.editSupplier = function (id) {
     showPage("addshop");
 };
 
+
+// delete supplier btn
 window.deleteSupplier = async function (id) {
     if (!confirm("Are you sure you want to remove this supplier?")) return;
 
@@ -402,6 +436,8 @@ window.deleteSupplier = async function (id) {
     await loadProducts(); // some products may now show "Unknown supplier"
 };
 
+
+// edit supplier
 document.getElementById("saveshopbtn").addEventListener("click", async function () {
     const name = document.getElementById("supName").value.trim();
     const email = document.getElementById("supEmail").value.trim();
@@ -436,7 +472,7 @@ function clearSupplierForm() {
     editingSupplierId = null;
 }
 
-// Search and Filter Functions (still done client-side on the loaded data)
+// Search and Filter Functions
 function filterProducts() {
     const query = document.getElementById("searchBox").value.toLowerCase();
     const selectedShopId = document.getElementById("shopfilter").value;
@@ -462,6 +498,8 @@ document.getElementById("searchBox").addEventListener("keyup", filterProducts);
 document.getElementById("shopfilter").addEventListener("change", filterProducts);
 document.getElementById("sortpick").addEventListener("change", filterProducts);
 
+
+//runs the moment my website is opened
 (async function init() {
     await checkSession();
     await loadSuppliers();

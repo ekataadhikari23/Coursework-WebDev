@@ -13,6 +13,7 @@ if ($name === "" || $email === "" || $phone === "") {
     exit;
 }
 
+//a row gets added to suppliers table
 $stmt = $conn->prepare("INSERT INTO suppliers (name, email, phone) VALUES (?, ?, ?)");
 $stmt->bind_param("sss", $name, $email, $phone);
 
